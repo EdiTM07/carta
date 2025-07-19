@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti ❤️</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Audio de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="audio/SaturnoPA.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Pantalla de Bienvenida -->
+    <div id="welcomeScreen" class="screen welcome-screen active">
+        <div class="main-heart" id="mainHeart"></div>
+        <div class="instruction">Mantén presionado el corazón ❤️</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Formulario -->
+    <div id="formScreen" class="screen form-screen">
+        <div class="form-container">
+            <h2 class="form-title">Un Momento Especial</h2>
+            <form id="userForm">
+                <div class="input-group">
+                    <label for="userName">Ingresa tu nombre</label>
+                    <input type="text" id="userName" name="userName" required>
+                </div>
+                <div class="input-group">
+                    <label for="birthDate">Tu fecha de nacimiento</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+                <button type="submit" class="submit-btn">Iniciar ✨</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pantalla de Contenido -->
+        
+    <div id="contentScreen" class="screen content-screen">
+        <!-- Control de sonido -->
+        <div id="soundControl" class="sound-control">
+            <button id="soundToggle" class="sound-toggle">🔊</button>
+        </div>
+        <!-- Contador de días -->
+        <div class="countdown-container">
+            <div class="countdown-number" id="dayCounter">0</div>
+            <div class="cake-icon">🎂</div>
+        </div>
+        <div class="greeting" id="personalGreeting"></div>
+        <div class="book-container">
+            <div class="book" id="book">
+                <div class="book-cover">
+                    <div class="cover-title">Abreme ❤️</div>
+                </div>
+                <div class="book-content">
+                    <div class="book-page left-page"></div>
+                    <div class="book-page right-page">
+                        <div class="page-content" id="bookContent">
+                            Haz clic para abrir el libro y descubrir<br>
+                            lo especial que eres para mí...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

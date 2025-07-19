@@ -1,0 +1,599 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    overflow-x: hidden; /* Cambié de hidden a overflow-x para permitir scroll vertical si es necesario */
+    background: linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #ff6b9d);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    min-height: 100vh; /* Cambié height por min-height */
+    position: relative;
+}
+
+.countdown-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.5s ease forwards;
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.countdown-number {
+    font-size: 1.5rem;
+    color: #c44569;
+    font-weight: bold;
+}
+
+.cake-icon {
+    font-size: 1.8rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Configuración de pantallas */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh; /* Cambié height por min-height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s ease;
+    z-index: 1; /* Agregué z-index para asegurar el apilamiento correcto */
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2; /* Las pantallas activas tienen mayor z-index */
+}
+
+/* === PANTALLA INICIAL === */
+.welcome-screen {
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-heart {
+    position: relative;
+    width: min(100px, 15vw);
+    height: min(100px, 15vw);
+    margin: 20px auto 60px;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    background-color: #ff4757;
+    cursor: pointer;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.main-heart:before,
+.main-heart:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #ff4757;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.main-heart:before {
+    top: -50%;
+}
+
+.main-heart:after {
+    left: -50%;
+}
+
+.main-heart:before {
+    top: -50px;
+    left: 0;
+}
+
+.main-heart:after {
+    left: 50px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.1); }
+    75% { transform: rotate(-45deg) scale(0.95); }
+}
+
+.instruction {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.progress-bar {
+    width: 200px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* === PANTALLA DE FORMULARIO === */
+.form-screen {
+    flex-direction: column;
+    padding: 20px;
+}
+
+.form-container {
+    background: rgba(255,255,255,0.95);
+    padding: min(40px, 5vw);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+}
+
+.form-title {
+    color: #c44569;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    color: #c44569;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ff6b9d;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9);
+}
+
+.input-group input:focus {
+    border-color: #c44569;
+    box-shadow: 0 0 15px rgba(196, 69, 105, 0.3);
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* === PANTALLA DE CONTENIDO === */
+.content-screen {
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sound-control {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.sound-toggle {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sound-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.greeting {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.book-container {
+    perspective: 1000px;
+    width: 600px;
+    height: 400px;
+    max-width: 90%;
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.book.opened {
+    transform: rotateY(-180deg);
+}
+
+@media (max-width: 768px) {
+    .book-container {
+        width: 90%;
+        height: 80vh;
+        max-height: 500px;
+        perspective: 1000px;
+    }
+    
+    .book {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .book-cover, 
+    .book-content,
+    .book-page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+    }
+    
+    .cover-title {
+        font-size: 2.2rem;
+        padding: 10px;
+    }
+    
+    .page-content {
+        font-size: 1.6rem;
+        line-height: 1.6;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+.book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    transform: rotateY(0deg);
+}
+
+.book-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.book-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    transform: rotateY(0deg);
+}
+
+.book-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fff, #ffe4e6);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    color: #c44569;
+}
+
+.left-page {
+    left: 0;
+    background: linear-gradient(135deg, #ffe4e6, #fff);
+}
+
+.right-page {
+    right: 0;
+    background: linear-gradient(135deg, #fff, #ffe4e6);
+}
+
+.cover-title {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: coverGlow 3s ease-in-out infinite;
+    color: white;
+}
+
+@keyframes coverGlow {
+    0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    50% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+}
+
+.page-content {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+}
+
+.book:not(.opened) .page-content {
+    opacity: 0;
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === EFECTO DE LLUVIA === */
+.rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.raindrop {
+    position: fixed;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+    width: 1px;
+    height: 15px;
+    opacity: 0;
+    animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* === EFECTOS DE CORAZONES === */
+.floating-heart {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    animation: float 6s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.interactive-heart {
+    position: fixed;
+    font-size: 30px;
+    color: rgba(255, 107, 157, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    animation: floatSlow 4s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+}
+
+.interactive-heart .love-message {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: #c44569;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    min-width: 200px;
+    max-width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 11;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.interactive-hearts-container {
+    pointer-events: auto !important;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 30px 20px;
+    }
+    
+    .main-heart {
+        width: 60px;
+        height: 60px;
+        background: #ff4757;
+        position: relative;
+        transform: rotate(45deg);
+        cursor: pointer;
+        margin-bottom: 30px;
+        transform-origin: center;
+        animation: heartbeat 2s ease-in-out infinite;
+    }
+    
+    .main-heart:before,
+    .main-heart:after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #ff4757;
+        position: absolute;
+        border-radius: 50%;
+    }
+    
+    .main-heart:before {
+        top: -50%;
+    }
+    
+    .main-heart:after {
+        left: -50%;
+    }
+
+@keyframes heartbeat {
+    0% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(1.1); }
+    100% { transform: rotate(45deg) scale(1); }
+}    .instruction {
+        font-size: 1.2rem;
+    }
+    
+    .greeting {
+        font-size: 1.2rem;
+    }
+}
