@@ -378,8 +378,6 @@ function showFirstMessage(bookContent) {
             Sé que cometí errores y que te lastimé, y no sabes cuánto me pesa en el corazón.
             Eres demasiado importante para mí,<br>
             por favor, regálame una oportunidad<br>
-            para empezar de nuevo y hacerte feliz<br>
-            como siempre debí. ✨<br>
             <small style="color: #c44569; font-style: italic; font-size: clamp(0.8rem, 2.5vw, 1rem);">
                 "No quiero perderte… te lo pido con todo mi corazón." 💖
             </small><br><br>
