@@ -43,7 +43,7 @@ function updateDayCounter() {
     
     const counterElement = document.getElementById('dayCounter');
     if (counterElement) {
-        counterElement.style.fontSize = "1.5rem"; // Restauramos el tamaño original
+        counterElement.style.fontSize = "1rem"; // Restauramos el tamaño original
         counterElement.textContent = `${daysDiff} días para tu cumpleaños`;
     }
 }
@@ -375,10 +375,9 @@ function showFirstMessage(bookContent) {
             Para ${userData.name} ❤️
         </div>
         <div style="line-height: 1.8; color: #8e44ad; font-size: clamp(0.9rem, 3vw, 1.1rem); padding: 10px;">
-            Sé que cometí errores y que te lastimé, y no sabes cuánto me pesa en el corazón.<br>
+            Sé que cometí errores y que te lastimé, y no sabes cuánto me pesa en el corazón.
             Eres demasiado importante para mí,<br>
             por favor, regálame una oportunidad<br>
-            para demostrarte que puedo hacerlo mejor.<br>
             para empezar de nuevo y hacerte feliz<br>
             como siempre debí. ✨<br>
             <small style="color: #c44569; font-style: italic; font-size: clamp(0.8rem, 2.5vw, 1rem);">
@@ -396,19 +395,20 @@ function showSecondMessage(bookContent) {
         <div style="font-size: clamp(1.2rem, 4vw, 1.5rem); margin-bottom: 10px; color: #c44569; padding: 10px; max-width: 100%; overflow-wrap: break-word;">
             Por favor, escúchame ❤️
         </div>
-        <div style="line-height: 1.8; color: #8e44ad; font-size: clamp(0.9rem, 3vw, 1.1rem); padding: 15px; max-width: 100%; overflow-wrap: break-word;">
-            "No quiero que esto quede así entre nosotros,<br>
-            porque "no" puedo dejar de pensar en ti ni en todo lo bonito que vivimos<br>
-            Me encantaría que me des la oportunidad de verte,<br>
-            <div style="font-size: 0.9rem; color: #c44569; margin-top: 10px;">
-            Déjame invitarte a salir, aunque sea un rato, 💑<br>
-            y demostrarte que puedo hacerlo mejor."<br></div>
+        <div style="line-height: 1.8; color: #8e44ad; font-size: clamp(0.9rem, 3vw, 1.1rem); padding: 10px;">
+            "No quiero que esto quede así entre nosotros,porque "no puedo dejar de pensar en ti,
+            Me encantaría que me des la oportunidad de verte."<br>
+            <small style="color: #c44569; font-style: italic; font-size: clamp(0.8rem, 2.5vw, 1rem);">
+                "Déjame invitarte a salir,<br>
+                y demostrarte que puedo hacerlo mejor." 💖
+            </small><br><br>
+        </div>
             <button onclick="sendWhatsAppMessage()" style="
                 background: linear-gradient(135deg, #ff6b9d, #c44569);
                 color: white;
                 border: none;
                 padding: 15px 30px;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 border-radius: 25px;
                 cursor: pointer;
                 transition: all 0.3s ease;
@@ -418,7 +418,7 @@ function showSecondMessage(bookContent) {
             ">
                 Sí, acepto ❤️
             </button>
-        </div>
+        
     `;
 }
 
