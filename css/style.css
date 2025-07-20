@@ -359,7 +359,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     transform: rotateY(0deg);
 }
@@ -384,7 +384,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     transform: rotateY(0deg);
 }
